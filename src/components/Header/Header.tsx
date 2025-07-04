@@ -1,7 +1,9 @@
+import Navbar from "../Navbar";
+
 function Header() {
   return (
     <header>
-      <nav>login</nav>
+      <Navbar />
     </header>
   );
 }

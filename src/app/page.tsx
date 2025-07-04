@@ -1,15 +1,10 @@
-"use client";
 import Header from "@/components/Header";
-import styled from "styled-components";
+import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 
 export default function Home() {
   return (
-    <Wrapper>
+    <MaxWidthWrapper>
       <Header />
-    </Wrapper>
+    </MaxWidthWrapper>
   );
 }
-
-const Wrapper = styled.div`
-  /* display: none; */
-`;

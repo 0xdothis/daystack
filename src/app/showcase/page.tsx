@@ -1,7 +1,11 @@
 import Header from "@/components/Header";
 
 function Showcase() {
-  return <Header />;
+  return (
+    <>
+      <Header />
+    </>
+  );
 }
 
 export default Showcase;
