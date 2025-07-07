@@ -3,7 +3,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { ChevronDown, Menu, X, ChevronRight } from "lucide-react";
+import { ChevronDown, Menu, X, ChevronRight, Play } from "lucide-react";
 
 interface IconProps {
   id: string;
@@ -21,6 +21,7 @@ interface WrapperProps {
 
 const icons = {
   menu: Menu,
+  play: Play,
   "chevron-down": ChevronDown,
   "chevron-right": ChevronRight,
   close: X,

@@ -1,23 +1,23 @@
-import Logo from "../Logo";
+"use client";
+
+import styled from "styled-components";
+
+import Links from "../Links/Links";
 
 function Navbar() {
   return (
-    <nav>
-      <Logo />
-      <h1>paystack</h1>
-      <ul>
-        <li>Developers</li>
-        <li>Support</li>
-        <li>Login</li>
-      </ul>
-      <ul>
-        <li>Why Paystack</li>
-        <li>Customers</li>
-        <li>Pricing</li>
-        <li>Learn</li>
-      </ul>
-    </nav>
+    <Wrapper>
+      <Links />
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.nav`
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex: 0.75;
+  padding: 0 16px;
+`;
 
 export default Navbar;

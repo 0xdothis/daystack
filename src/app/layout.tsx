@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${rubik.className}`}>
         <StyledComponentsRegistry>
-          {children}
+          <main>{children}</main>
           <GlobalStyles />
         </StyledComponentsRegistry>
       </body>

@@ -1,10 +1,12 @@
 import Header from "@/components/Header";
-import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+
+import Showcase from "@/components/Showcase";
 
 export default function Home() {
   return (
-    <MaxWidthWrapper>
+    <>
       <Header />
-    </MaxWidthWrapper>
+      <Showcase />
+    </>
   );
 }

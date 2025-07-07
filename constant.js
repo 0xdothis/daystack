@@ -17,14 +17,27 @@ export const BREAKPOINTS = {
   laptop: 1300,
 };
 
-export const QUERIES = {
-  tabletAndBigger: `(min-width: ${BREAKPOINTS.tablet / 16}rem)`,
-  laptopAndBigger: `(min-width: ${BREAKPOINTS.laptop / 16}rem)`,
-};
-
 export const WEIGHTS = {
   normal: 400,
   medium: 500,
   bold: 700,
   black: 900,
+};
+
+export const QUERIES = {
+  phoneAndSmaller: `(max-width:${BREAKPOINTS.phone / 16}rem)`,
+  tabletAndSmaller: `(max-width:${BREAKPOINTS.tablet / 16}rem)`,
+  laptopAndSmaller: `(max-width:${BREAKPOINTS.laptop / 16}rem)`,
+};
+
+export const FONT_SIZES = {
+  small: 14,
+  body: 16,
+  h1: 48,
+  h2: 45,
+  h3: 36,
+  h4: 24,
+  h5: 20,
+  h6: 16,
+  description: 20,
 };
