@@ -8,27 +8,19 @@ import Flag from "../Flag";
 import Logo from "../Logo";
 
 import NIGERIA_FLAG from "../../../public/logos/flag_of_nigeria.svg";
-import MaxWidthWrapper from "../MaxWidthWrapper";
 
 function Header() {
   return (
-    <Container>
-      <Wrapper>
-        <Logo />
-        <Navbar />
-        <CTAWrapper>
-          <CTAButton>Create a New Account</CTAButton>
-          <Flag src={NIGERIA_FLAG} alt="a flag of nigeria" />
-        </CTAWrapper>
-      </Wrapper>
-    </Container>
+    <Wrapper>
+      <Logo />
+      <Navbar />
+      <CTAWrapper>
+        <CTAButton>Create a New Account</CTAButton>
+        <Flag src={NIGERIA_FLAG} alt="a flag of nigeria" />
+      </CTAWrapper>
+    </Wrapper>
   );
 }
-
-const Container = styled(MaxWidthWrapper)`
-  /* padding: 0px; */
-  position: relative;
-`;
 
 const Wrapper = styled.header`
   max-width: 1800px;

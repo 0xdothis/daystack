@@ -3,7 +3,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { ChevronDown, Menu, X, ChevronRight, Play } from "lucide-react";
+import { ChevronDown, Menu, X, ChevronRight, Play, Check } from "lucide-react";
 
 interface IconProps {
   id: string;
@@ -24,6 +24,7 @@ const icons = {
   play: Play,
   "chevron-down": ChevronDown,
   "chevron-right": ChevronRight,
+  check: Check,
   close: X,
 };
 

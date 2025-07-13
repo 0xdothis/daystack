@@ -1,6 +1,7 @@
 "use client";
 
 import UnstyledButton from "@/components/UnstyledButton/UnstyledButton";
+import Link from "next/link";
 import styled from "styled-components";
 
 type ButtonProps = {
@@ -10,7 +11,7 @@ type ButtonProps = {
 
 function Button({ href, children }: ButtonProps) {
   if (href) {
-    return <PrimaryLink>{children}</PrimaryLink>;
+    return <PrimaryLink href={href}>{children}</PrimaryLink>;
   }
 
   return <PrimaryButton>{children}</PrimaryButton>;
@@ -28,9 +29,10 @@ const PrimaryButton = styled(UnstyledButton)`
   display: block;
 `;
 
-const PrimaryLink = styled(UnstyledButton)`
+const PrimaryLink = styled(Link)`
   padding: 13px 18px;
   font-size: 12px;
   font-weight: 400;
   color: var(--color-primary);
+  text-decoration: none;
 `;

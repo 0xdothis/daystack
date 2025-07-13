@@ -72,14 +72,12 @@ const Wrapper = styled.section`
 `;
 
 const Container = styled(MaxWidthWrapper)`
-  padding: 0 var(--padding-x-72);
   padding-bottom: var(--padding-x-72);
 `;
 
 const ShowcaseContent = styled.div`
   padding-top: calc(var(--padding-80) * 2);
   padding-bottom: var(--padding-72);
-  color: var(--color-text);
 `;
 
 const ShowcaseHero = styled.div`
@@ -108,7 +106,7 @@ const SectionImage = styled.div`
   & img {
     width: 100%;
     display: block;
-    height: 100%;
+    height: auto;
   }
 `;
 
