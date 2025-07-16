@@ -9,6 +9,7 @@ export const COLORS = {
   bg: "200deg 33% 98%",
   black: "209deg 93% 11%",
   text: "209deg 96% 10%",
+  blue_bg: "198deg 100% 97%",
 };
 
 export const BREAKPOINTS = {

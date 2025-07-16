@@ -60,7 +60,7 @@ table {
 
 }
 
-#root {
+#root, main {
   /*
     Create a stacking context, without a z-index.
     This ensures that all portal content (modals and tooltips) will
@@ -69,6 +69,7 @@ table {
   isolation: isolate;
   
 }
+
 
 html {
  
@@ -81,6 +82,7 @@ html {
 --color-text: hsl(${COLORS.text});
 --color-green-10: hsl(${COLORS.accents.light_green});
 --color-blue-10: hsl(${COLORS.accents.light_blue});
+--color-blue-bg: hsl(${COLORS.blue_bg});
 
 
 
