@@ -6,13 +6,22 @@ import Card from "../Card/Card";
 
 interface DataProps {
   data: CardProps[];
+  imageWidth?: string;
+  imageHeight?: string;
+  imageWrapper?: string;
 }
 
-function CardItem({ data }: DataProps) {
+function CardItem({ imageWidth, imageWrapper, imageHeight, data }: DataProps) {
   return (
     <Wrapper>
       {data.map((card) => (
-        <Card {...card} key={crypto.randomUUID()} />
+        <Card
+          {...card}
+          key={crypto.randomUUID()}
+          imageWidth={imageWidth}
+          imageHeight={imageHeight}
+          imageWrapper={imageWrapper}
+        />
       ))}
     </Wrapper>
   );
@@ -21,6 +30,7 @@ function CardItem({ data }: DataProps) {
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--gap-32);
 `;
 
 export default CardItem;

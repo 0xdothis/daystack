@@ -1,3 +1,5 @@
+import CallToAction from "@/components/CallToAction";
+import GlobalPartners from "@/components/GlobalPartners";
 import Growth from "@/components/Growth";
 import Header from "@/components/Header";
 import SimplePayment from "@/components/Section";
@@ -12,6 +14,8 @@ export default function Home() {
       <SimplePayment />
       <Trusted />
       <Growth />
+      <GlobalPartners />
+      <CallToAction />
     </>
   );
 }

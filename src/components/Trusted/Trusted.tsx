@@ -7,7 +7,6 @@ import MaxWidthWrapper from "../MaxWidthWrapper";
 
 import vector from "../../../public/vector.svg";
 import Heading from "@/ui/Heading";
-import Card from "../Card";
 import CardItem from "../CardItem";
 import { BUSINESSES } from "../../../data";
 

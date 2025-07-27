@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import styled from "styled-components";
 
 import Heading from "@/ui/Heading";
@@ -10,14 +10,23 @@ import Icon from "../Icon";
 import { WEIGHTS } from "../../../constant";
 
 export type CardProps = {
-  imageUrl: string;
+  imageUrl: StaticImageData;
   alt: string;
   heading?: string;
   description: string;
-  profilePhoto: string;
+  profilePhoto?: StaticImageData;
   link?: string;
-  name: string;
+  name?: string;
   post?: string;
+  imageWidth?: string;
+  imageHeight?: string;
+  imageWrapper?: string;
+};
+
+type ImageWidthProps = {
+  $imageWidth: string;
+  $imageHeight: string;
+  $imageWrapper: string;
 };
 
 function Card({
@@ -29,38 +38,49 @@ function Card({
   link,
   name,
   post,
+  imageWidth = "97px",
+  imageHeight = "auto",
+  imageWrapper = "var(--margin-48)",
 }: CardProps) {
   return (
-    <Wrapper>
-      <Content>
-        <ImageWrapper>
-          <Image src={imageUrl} alt={alt} />
-        </ImageWrapper>
-        {!!heading && <H4 level="h4">{heading}</H4>}
-        <Description>{description}</Description>
-      </Content>
-      <FooterWrapper>
-        {!!link && (
-          <LinkWrapper>
-            <IconWrapper>
-              <Icon id="chevron-right" size={12} />
-            </IconWrapper>
-            <Link href="/learn">Learn more</Link>
-          </LinkWrapper>
-        )}
-        {!!post && (
-          <>
-            <ProfileWrapper>
-              <ProfilePhoto src={profilePhoto} alt={name} />
-            </ProfileWrapper>
-            <PostWrapper>
-              <H6>{name}</H6>
-              <Occupation>{post}</Occupation>
-            </PostWrapper>
-          </>
-        )}
-      </FooterWrapper>
-    </Wrapper>
+    <Trigger>
+      <Wrapper>
+        <Content>
+          <ImageWrapper
+            $imageWidth={imageWidth}
+            $imageHeight={imageHeight}
+            $imageWrapper={imageWrapper}
+          >
+            <Image src={imageUrl} alt={alt} />
+          </ImageWrapper>
+          {!!heading && <H4 level="h4">{heading}</H4>}
+          <Description>{description}</Description>
+        </Content>
+        <FooterWrapper>
+          {!!link && (
+            <LinkWrapper>
+              <IconWrapper>
+                <Icon id="chevron-right" size={12} />
+              </IconWrapper>
+              <Link href="/learn">Learn more</Link>
+            </LinkWrapper>
+          )}
+          {!!post && (
+            <>
+              <ProfileWrapper>
+                {!!profilePhoto && (
+                  <ProfilePhoto src={profilePhoto} alt={name!} />
+                )}
+              </ProfileWrapper>
+              <PostWrapper>
+                <H6>{name}</H6>
+                <Occupation>{post}</Occupation>
+              </PostWrapper>
+            </>
+          )}
+        </FooterWrapper>
+      </Wrapper>
+    </Trigger>
   );
 }
 
@@ -68,11 +88,14 @@ const Wrapper = styled.article`
   padding: var(--padding-32);
   background-color: var(--color-white);
   width: fit-content;
+  height: 100%;
   border-radius: 4px;
   color: var(--color-text);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  will-change: transform;
+  transition: transform 250ms ease-in-out;
 
   /* Shawdow box */
   box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
@@ -80,13 +103,23 @@ const Wrapper = styled.article`
   -moz-box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
 `;
 
+const Trigger = styled.div`
+  @media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    &:hover ${Wrapper} {
+      transform: translateY(-20px) scale(1.05);
+    }
+  }
+`;
+
 const Content = styled.div``;
 
-const ImageWrapper = styled.div`
-  width: 97px;
-  margin-bottom: var(--margin-48);
+const ImageWrapper = styled.div<ImageWidthProps>`
+  width: ${(p) => p.$imageWidth};
+  height: ${(p) => p.$imageHeight};
+  margin-bottom: ${(p) => p.$imageWrapper};
 
   & img {
+    display: block;
     width: 100%;
     height: auto;
   }
@@ -128,13 +161,7 @@ const ProfileWrapper = styled.div`
   width: 60px;
   position: relative;
   border-radius: 100px;
-
-  & img {
-    width: 100%;
-    height: auto;
-    position: absolute;
-    z-index: 1;
-  }
+  flex-shrink: 0;
 
   /* Create a solid color behind the div for styling */
   &::before {
@@ -148,12 +175,16 @@ const ProfileWrapper = styled.div`
     bottom: 0;
     border-radius: 100px;
     background-color: var(--color-blue-10);
+    display: block;
   }
 `;
 
 const ProfilePhoto = styled(Image)`
   width: 100%;
   height: 100%;
+  display: block;
+  position: absolute;
+  z-index: 1;
 `;
 
 const H6 = styled(Heading)`
@@ -162,7 +193,7 @@ const H6 = styled(Heading)`
 `;
 
 const Occupation = styled.p`
-  font-size: var(--text-small);
+  font-size: 12px;
   font-weight: 200;
 `;
 
